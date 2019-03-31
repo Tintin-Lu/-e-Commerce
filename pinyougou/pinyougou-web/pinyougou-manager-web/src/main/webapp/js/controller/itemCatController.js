@@ -58,4 +58,38 @@ app.controller('itemCatController', function($scope, $controller, baseService){
             alert("请选择要删除的记录！");
         }
     };
+
+    /** 根据父级id查询商品分类 */
+    $scope.findItemCatByParentId = function (parentId) {
+        baseService.sendGet("/itemCat/findItemCatByParentId?parentId=" + parentId).then(function (response){
+            /** 获取响应数据*/
+            $scope.dataList = response.data;
+        })
+    };
+
+    /** 定义级别的变量 */
+    $scope.grade = 1;
+
+    /** 查询下级*/
+    $scope.selectList = function (entity,grade) {
+        /** 改变级别变量的值*/
+        $scope.grade = grade;
+
+        if($scope.grade == 1){
+            $scope.itemCat_1 = null;
+            $scope.itemCat_2 = null;
+        }
+
+        /** 记录一级分类*/
+        if($scope.grade == 2){
+            $scope.itemCat_1 = entity;
+        }
+        /** 记录二级分类*/
+        if($scope.grade == 3){
+            $scope.itemCat_2 = entity;
+        }
+
+        /** 调用方法*/
+        $scope.findItemCatByParentId(entity.id)
+    }
 });

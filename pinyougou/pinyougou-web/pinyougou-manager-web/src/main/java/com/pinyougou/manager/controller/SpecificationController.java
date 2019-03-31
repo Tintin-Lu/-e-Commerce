@@ -8,6 +8,9 @@ import com.pinyougou.service.SpecificationService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Map;
+
 @RestController
 @RequestMapping("specification")
 public class SpecificationController {
@@ -39,6 +42,13 @@ public class SpecificationController {
         }
         return false;
     }
+
+    /** 查询所有的规格(id与specName) */
+    @GetMapping("/findSpecList")
+    public List<Map<String, Object>> findSpecList(){
+        return specificationService.findAllByIdAndName();
+    }
+
 
     /** 根据规格主键查询规格选项 */
 

@@ -4,6 +4,8 @@ import com.pinyougou.pojo.PageResult;
 import com.pinyougou.pojo.Specification;
 import java.util.List;
 import java.io.Serializable;
+import java.util.Map;
+
 /**
  * SpecificationService 服务接口
  * @date 2019-03-27 23:37:50
@@ -32,4 +34,6 @@ public interface SpecificationService {
 	/** 多条件分页查询 */
 	PageResult findByPage(Specification specification, int page, int rows);
 
+	/** 查询所有的规格(id与specName) */
+    List<Map<String,Object>> findAllByIdAndName();
 }

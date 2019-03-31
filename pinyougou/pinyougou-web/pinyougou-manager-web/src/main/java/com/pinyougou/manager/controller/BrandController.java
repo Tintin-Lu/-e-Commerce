@@ -9,6 +9,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("brand")
@@ -74,5 +75,11 @@ public class BrandController {
             e.printStackTrace();
         }
         return false;
+    }
+
+    /** 查询所有的品牌(id与name) */
+    @GetMapping("findBrandList")
+    public List<Map<String,Object>> findBrandList(){
+        return brandService.findAllByIdAndName();
     }
 }

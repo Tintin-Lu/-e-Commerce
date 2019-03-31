@@ -5,6 +5,7 @@ import com.pinyougou.pojo.PageResult;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 public interface BrandService {
 
@@ -28,4 +29,7 @@ public interface BrandService {
 
     /** 多条件分页查询 */
     PageResult findByPage(Brand brand, int page, int rows);
+
+    /** 查询所有的品牌(id与name) */
+    List<Map<String,Object>> findAllByIdAndName();
 }
